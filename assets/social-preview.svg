@@ -1,0 +1,20 @@
+<svg width="1280" height="640" viewBox="0 0 1280 640" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1280" height="640" fill="#F6F1E8"/>
+  <rect x="58" y="58" width="1164" height="524" rx="24" fill="#FFFDF8" stroke="#D9D1C3" stroke-width="4"/>
+  <rect x="120" y="168" width="1040" height="120" rx="16" fill="#EEF1F5"/>
+  <text x="640" y="118" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="72" font-weight="700" fill="#23262D">老板.skill</text>
+  <text x="640" y="222" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="34" font-style="italic" fill="#596273">把老板的压迫风格与决策习惯蒸馏成 AI Skill</text>
+  <text x="640" y="270" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="34" font-style="italic" fill="#596273">让它替老板来拷打你</text>
+
+  <text x="640" y="368" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="30" font-weight="700" fill="#23262D">支持 archetype 与真人复刻，支持资料导入、纠正进化与版本回滚</text>
+  <text x="640" y="420" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="28" fill="#23262D">练汇报 · 练被追责 · 练对线 · 练向上管理</text>
+
+  <rect x="300" y="486" width="140" height="44" rx="10" fill="#3C4049"/>
+  <rect x="456" y="486" width="146" height="44" rx="10" fill="#D4AF37"/>
+  <rect x="618" y="486" width="160" height="44" rx="10" fill="#1777C8"/>
+  <rect x="794" y="486" width="196" height="44" rx="10" fill="#7C3AED"/>
+  <text x="370" y="515" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="24" fill="#FFFFFF">MIT</text>
+  <text x="529" y="515" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="24" fill="#FFFFFF">Python</text>
+  <text x="698" y="515" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="24" fill="#FFFFFF">3.9+</text>
+  <text x="892" y="515" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="24" fill="#FFFFFF">Claude Code Skill</text>
+</svg>
