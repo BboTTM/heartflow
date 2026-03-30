@@ -39,6 +39,14 @@ allowed-tools: Read, Write, Edit, Bash
 - 暧昧
 - 表白
 - 确定关系
+- 恋爱
+
+它还支持场景层：
+
+- 日常
+- 争吵
+
+其中 `争吵` 是互动场景，不属于关系主线阶段。
 
 明确不支持：
 
@@ -67,8 +75,11 @@ allowed-tools: Read, Write, Edit, Bash
 - 暧昧
 - 表白
 - 确定关系
+- 恋爱
 
 如果用户跳过，默认 `相识`。
+
+如果用户表示双方已经认识、已经聊过一阵，可以提醒：多数实战演练从 `升温` 开始更合适。
 
 ### Step 3A: archetype 路径
 
@@ -159,6 +170,7 @@ python3 ${CLAUDE_SKILL_DIR}/tools/skill_writer.py \
 策略视角输出：
 
 - 当前阶段判断
+- 当前场景判断
 - 对方信号
 - 关系推进风险
 - 下一步建议

@@ -41,8 +41,10 @@ class AnalyzeRelationshipMaterialsTest(unittest.TestCase):
             card = card_out.read_text(encoding="utf-8")
             self.assertEqual(meta["display_name"], "Lin")
             self.assertEqual(meta["relationship_stage"], "熟悉")
+            self.assertEqual(meta["current_scene"], "日常")
             self.assertIn("archetype_guess", meta["analysis"])
             self.assertIn("## interaction_style", card)
+            self.assertIn("## 当前场景", card)
 
 
 if __name__ == "__main__":

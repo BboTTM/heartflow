@@ -2,6 +2,7 @@
   "display_name": "Lin",
   "source_type": "real-person",
   "relationship_stage": "熟悉",
+  "current_scene": "日常",
   "core_persona": "慢热型关系对象",
   "default_mode": "immersive",
   "slug": "lin-demo",

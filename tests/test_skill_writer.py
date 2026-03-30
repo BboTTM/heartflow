@@ -32,6 +32,7 @@ class RelationshipSkillWriterTest(unittest.TestCase):
                         "display_name": "Lin",
                         "source_type": "real-person",
                         "relationship_stage": "熟悉",
+                        "current_scene": "日常",
                         "core_persona": "慢热型对象",
                         "default_mode": "immersive",
                     },
@@ -40,7 +41,7 @@ class RelationshipSkillWriterTest(unittest.TestCase):
                 encoding="utf-8",
             )
             card_file.write_text(
-                "## 核心人格\n\n慢热型对象。\n\n## 当前阶段\n\n熟悉\n",
+                "## 核心人格\n\n慢热型对象。\n\n## 当前阶段\n\n熟悉\n\n## 当前场景\n\n日常\n",
                 encoding="utf-8",
             )
             material_file.write_text(
@@ -73,6 +74,7 @@ class RelationshipSkillWriterTest(unittest.TestCase):
             card = (base_dir / "lin" / "relationship-card.md").read_text(encoding="utf-8")
             self.assertEqual(meta["slug"], "lin")
             self.assertEqual(meta["relationship_stage"], "熟悉")
+            self.assertEqual(meta["current_scene"], "日常")
             self.assertIn("source_updates", card)
             self.assertIn("corrections", card)
 

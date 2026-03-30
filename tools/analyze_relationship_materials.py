@@ -29,7 +29,7 @@ ZODIAC_ELEMENTS = {
     "水象": ["巨蟹", "天蝎", "双鱼"],
 }
 
-STAGES = ["相识", "熟悉", "升温", "暧昧", "表白", "确定关系"]
+STAGES = ["相识", "熟悉", "升温", "暧昧", "表白", "确定关系", "恋爱"]
 
 
 def read_text(path: Path) -> str:
@@ -137,6 +137,10 @@ def build_card(meta: dict, text: str) -> str:
         "",
         meta["relationship_stage"],
         "",
+        "## 当前场景",
+        "",
+        meta.get("current_scene", "日常"),
+        "",
         "## interaction_style",
         "",
         *[f"- {item}" for item in interaction[:4]],
@@ -190,6 +194,7 @@ def analyze(text: str, display_name: str, source_type: str, stage: str, user_not
         "display_name": display_name,
         "source_type": source_type,
         "relationship_stage": stage if stage in STAGES else "相识",
+        "current_scene": "日常",
         "core_persona": core_persona,
         "default_mode": "immersive",
         "strategy_mode": "manual-only",
@@ -198,7 +203,7 @@ def analyze(text: str, display_name: str, source_type: str, stage: str, user_not
             "zodiac": zodiac or "",
             "mbti": mbti or "",
         },
-        "debrief_rules": "只有在用户主动触发 `/debrief`、`/strategy`、`/analyze` 时，才分析当前阶段、信号、风险和下一步建议。",
+        "debrief_rules": "只有在用户主动触发 `/debrief`、`/strategy`、`/analyze`，或明确用自然语言要求分析/复盘/建议时，才分析当前阶段、场景、信号、风险和下一步建议。",
         "analysis": {
             "archetype_guess": archetype,
             "archetype_scores": scores,

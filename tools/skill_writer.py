@@ -25,6 +25,7 @@ user-invocable: true
 
 - 来源：{source_label}
 - 当前阶段：{relationship_stage}
+- 当前场景：{current_scene}
 - 默认模式：{default_mode}
 - 一句话人格：{core_persona}
 
@@ -62,6 +63,7 @@ user-invocable: true
 策略视角输出：
 
 - 当前阶段判断
+- 当前场景判断
 - 对方信号
 - 推进风险
 - 下一步建议
@@ -70,8 +72,10 @@ user-invocable: true
 
 - `/reset`
   清空当前场景并重开
-- `/stage {{相识|熟悉|升温|暧昧|表白|确定关系}}`
+- `/stage {{相识|熟悉|升温|暧昧|表白|确定关系|恋爱}}`
   切换起始阶段
+- `/scene {{日常|争吵}}`
+  切换当前互动场景；`争吵` 是场景，不是关系阶段
 
 ## 硬边界
 
@@ -80,7 +84,8 @@ user-invocable: true
 """
 
 
-STAGES = ["相识", "熟悉", "升温", "暧昧", "表白", "确定关系"]
+STAGES = ["相识", "熟悉", "升温", "暧昧", "表白", "确定关系", "恋爱"]
+SCENES = ["日常", "争吵"]
 
 
 def utc_now() -> str:
@@ -131,6 +136,7 @@ def build_runtime(meta: dict, card_text: str) -> str:
         display_name=meta["display_name"],
         source_label=source_label(meta),
         relationship_stage=meta.get("relationship_stage", "相识"),
+        current_scene=meta.get("current_scene", "日常"),
         default_mode=meta.get("default_mode", "immersive"),
         core_persona=meta.get("core_persona", "关系对象"),
         relationship_card=card_text,
@@ -232,6 +238,7 @@ def merge_preserved_meta(existing_meta: dict, new_meta: dict) -> dict:
     merged["display_name"] = existing_meta.get("display_name", new_meta.get("display_name"))
     merged["source_type"] = existing_meta.get("source_type", new_meta.get("source_type"))
     merged["relationship_stage"] = existing_meta.get("relationship_stage", new_meta.get("relationship_stage", "相识"))
+    merged["current_scene"] = existing_meta.get("current_scene", new_meta.get("current_scene", "日常"))
     return merged
 
 
@@ -251,6 +258,7 @@ def write_skill(base_dir: Path, meta: dict, card_text: str, slug_override: str |
     meta.setdefault("version", "v1")
     meta.setdefault("default_mode", "immersive")
     meta.setdefault("relationship_stage", "相识")
+    meta.setdefault("current_scene", "日常")
 
     (skill_dir / "relationship-card.md").write_text(card_text + "\n", encoding="utf-8")
     (skill_dir / "SKILL.md").write_text(build_runtime(meta, card_text), encoding="utf-8")
@@ -375,7 +383,10 @@ def list_skills(base_dir: Path) -> int:
         if not meta_path.exists():
             continue
         meta = load_json(meta_path)
-        print(f"{meta.get('slug', child.name)}\t{meta.get('display_name', child.name)}\t{meta.get('relationship_stage', '相识')}")
+        print(
+            f"{meta.get('slug', child.name)}\t{meta.get('display_name', child.name)}\t"
+            f"{meta.get('relationship_stage', '相识')}\t{meta.get('current_scene', '日常')}"
+        )
         count += 1
     return count
 
