@@ -19,7 +19,7 @@
 
 创建一个关系对象，然后直接开练。<br>
 支持自选关系风格 archetype、星座象限/星座、MBTI 生成对象。<br>
-也支持聊天截图、文档、飞书 API 和主观描述做真人复刻。<br>
+也支持聊天截图、文档、日常社交软件聊天导出和主观描述做真人复刻。<br>
 角色不是一次性 prompt，会随着资料导入、对话纠正持续进化。<br>
 你可以用它练相识、熟悉、升温、暧昧、表白、确定关系和恋爱，也可以切到争吵场景单练。
 
@@ -69,7 +69,7 @@ pip3 install -r requirements.txt
 - `archetype`
   通过关系风格 + 星座 + MBTI 混合生成对象
 - `real-person`
-  根据聊天记录、截图、文档、飞书 API 和主观描述复刻某个人
+  根据聊天记录、截图、文档、社交软件聊天导出和主观描述复刻某个人
 
 创建时会问：
 
@@ -173,21 +173,22 @@ relationships/{slug}/corrections.jsonl
                     下一步建议：围绕共同记忆或线下轻邀约，测试主动性
 ```
 
-## 飞书聊天记录导入
+## 社交聊天记录导入
 
-先准备环境变量：
+支持把常见日常社交软件导出的聊天文件统一导入进来，例如：
 
-```bash
-export FEISHU_APP_ID="cli_xxx"
-export FEISHU_APP_SECRET="xxx"
-```
+- 微信/QQ 导出的文本整理稿
+- Telegram 导出的 JSON
+- WhatsApp 导出的 TXT
+- 其他平台整理成 `txt / json / jsonl / csv` 的聊天记录
 
 导入聊天记录：
 
 ```bash
-python3 tools/feishu_chat_import.py \
-  --chat-id "oc_xxx" \
-  --output ./relationships/lin/knowledge/messages/feishu-chat.txt
+python3 tools/social_chat_import.py \
+  --input ./exports/chat.json \
+  --platform telegram \
+  --output ./relationships/lin/knowledge/messages/social-chat.txt
 ```
 
 然后刷新对象卡：

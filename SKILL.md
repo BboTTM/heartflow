@@ -1,6 +1,6 @@
 ---
 name: create-heartflow
-description: "Create and evolve a HeartFlow skill. Supports archetype-based characters and real-person reconstruction from chats, screenshots, docs, Feishu API, and notes. | 创建并进化一个恋爱 skill。"
+description: "Create and evolve a HeartFlow skill. Supports archetype-based characters and real-person reconstruction from chats, screenshots, docs, exported social chat logs, and notes. | 创建并进化一个恋爱 skill。"
 argument-hint: "[person-name-or-slug]"
 version: "0.1.0"
 user-invocable: true
@@ -105,15 +105,16 @@ allowed-tools: Read, Write, Edit, Bash
 - 聊天记录
 - 聊天截图
 - 文档
-- 飞书 chat_id
+- 社交软件导出的聊天文件
 - 主观描述
 
-如果用户给的是飞书 chat_id：
+如果用户给的是社交软件导出的聊天文件：
 
 ```bash
-python3 ${CLAUDE_SKILL_DIR}/tools/feishu_chat_import.py \
-  --chat-id "oc_xxx" \
-  --output "./relationships/{slug}/knowledge/messages/feishu-chat.txt"
+python3 ${CLAUDE_SKILL_DIR}/tools/social_chat_import.py \
+  --input "{chat_export_file}" \
+  --platform "{wechat|qq|telegram|whatsapp|other}" \
+  --output "./relationships/{slug}/knowledge/messages/social-chat.txt"
 ```
 
 ### Step 4: 生成对象

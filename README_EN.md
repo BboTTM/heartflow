@@ -11,7 +11,7 @@ Recommended command path:
 This skill supports:
 
 - archetype-based generation using relationship style, zodiac, and MBTI
-- real-person reconstruction from chats, screenshots, docs, Feishu API, and notes
+- real-person reconstruction from chats, screenshots, docs, exported social chat logs, and notes
 - immersive interaction by default
 - strategy analysis only when the user explicitly asks for it
 
